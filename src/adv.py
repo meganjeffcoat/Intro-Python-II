@@ -80,3 +80,25 @@ while True:
         else:
             print("You cannot go that direction")
             continue
+    elif current_room == "overlook":
+        if direction == "s":
+            current_room == "foyer"
+        else:
+            print("You cannot go that direction")
+            continue
+    elif current_room == "narrow":
+        if direction == "w":
+            current_room == "foyer"
+        elif direction == "n":
+            current_room == "treasure"
+        else:
+            print("You cannot go that direction")
+            continue
+    elif current_room == "treasure":
+        if direction == "s":
+            current_room == "narrow"
+        else:
+            print("You cannot go that direction")
+            continue
+
+print("Thanks for playing, come play again!")
