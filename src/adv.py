@@ -51,54 +51,21 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-current_room = 'outside'
+current_room = room['outside']
 name = input("Please add character name: ")
+player = Player(name, current_room)
+playerRoom = Room(current_room.name, current_room.description)
 
 while True:
-    player = Player(name, current_room)
-    playerRoom = Room(room[current_room].name, room[current_room].description)
-    print(player)
-    print(playerRoom)
 
     direction = input(
         "Please choose a direction, North(n), South(s), West(w), East(e), Quit(q): ")
-    if direction == "q":
+    if direction in ["n", "s", "w", "e"]:
+        player.travel(direction)
+        continue
+    elif direction == "q":
         break
-    elif current_room == "outside":
-        if direction == "n":
-            current_room = "foyer"
-        else:
-            print("You cannot go that direction")
-            continue
-    elif current_room == "foyer":
-        if direction == "s":
-            current_room == "outside"
-        elif direction == "n":
-            current_room == "overlook"
-        elif direction == "e":
-            current_room == "narrow"
-        else:
-            print("You cannot go that direction")
-            continue
-    elif current_room == "overlook":
-        if direction == "s":
-            current_room == "foyer"
-        else:
-            print("You cannot go that direction")
-            continue
-    elif current_room == "narrow":
-        if direction == "w":
-            current_room == "foyer"
-        elif direction == "n":
-            current_room == "treasure"
-        else:
-            print("You cannot go that direction")
-            continue
-    elif current_room == "treasure":
-        if direction == "s":
-            current_room == "narrow"
-        else:
-            print("You cannot go that direction")
-            continue
+    else:
+        print("You cannot go that direction")
 
 print("Thanks for playing, come play again!")
