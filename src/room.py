@@ -9,7 +9,7 @@ class Room:
 
     def __str__(self):
 
-        return f'room: {self.name}, description: {self.description}'
+        return f"{self.name}, {self.description}"
 
     name = str
     description = str
