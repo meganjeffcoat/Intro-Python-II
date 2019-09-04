@@ -38,11 +38,6 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player(
-    input("Please enter name for your character: "), room['outside'])
-
-action = input("Go North(n), South(s), West(w), or East(e) \nQuit Game(q)")
-player.action_input(action)
 
 
 # Write a loop that:
@@ -55,15 +50,3 @@ player.action_input(action)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-
-while True:
-    if action == 'q':
-        break
-    elif player.current_room is not None:
-        player.display_room()
-        action = input(
-            "Go North(n), South(s), West(w), or East(e) \nQuit Game(q)")
-        player.action_input(action)
-        continue
-    else:
-        print("Room selected does not exist, please choose a valid room")
