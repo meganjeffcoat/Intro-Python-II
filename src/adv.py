@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -33,7 +34,28 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
+# Items
+
+item = {
+    'map': Item("Map", "Look a map to guide you!"),
+    'sword': Item("Sword", "You found the sword"),
+    'wand': Item("Want", "You found a magic wand"),
+    'food': Item("Food", "You found some food, go ahead and eat"),
+    'cloak': Item("Cloak", "You found an invisibility cloak"),
+    'candle': Item("Candle", "You found a candle"),
+    'hammock': Item("Hammock", "Look a hammock, rest a spell"),
+}
+
+# Link items to rooms
+
+room['outside'].items.append(item['map'])
+room['foyer'].items.append(item['food'])
+room['foyer'].items.append(item['sword'])
+room['overlook'].items.append(item['hammock'])
+room['narrow'].items.append(item['candle'])
+room['treasure'].items.append(item['cloak'])
+room['treasure'].items.append(item['wand'])
+
 # Main
 #
 
@@ -57,6 +79,8 @@ player = Player(name, current_room)
 playerRoom = Room(current_room.name, current_room.description)
 
 while True:
+
+    # print(f"Items in {current_room.name}: {current_room.items}")
 
     direction = input(
         "Please choose a direction, North(n), South(s), West(w), East(e), Quit(q): ")
