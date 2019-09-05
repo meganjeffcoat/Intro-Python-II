@@ -13,7 +13,7 @@ class Room:
 
     def __str__(self):
 
-        return f"{self.name}, {self.description}, Travel Direction:{self.roomExitStr()}"
+        return f"{self.name},\n{self.description},\nTravel Direction:{self.roomExitStr()}"
 
     def roomInDirection(self, direction):
         if direction == "n":
