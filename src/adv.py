@@ -80,8 +80,6 @@ playerRoom = Room(current_room.name, current_room.description)
 
 while True:
 
-    # print(f"Items in {current_room.name}: {current_room.items}")
-
     direction = input(
         "Please choose a direction, North(n), South(s), West(w), East(e), Quit(q): ")
     if direction in ["n", "s", "w", "e"]:
