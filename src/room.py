@@ -10,10 +10,11 @@ class Room:
         self.s_to = None
         self.w_to = None
         self.e_to = None
+        self.items = []
 
     def __str__(self):
 
-        return f"{self.name},\n{self.description},\nTravel Direction:{self.roomExitStr()}"
+        return f"{self.name},\n{self.description},\nTravel Direction:{self.roomExitStr()}\nItems: {self.items}"
 
     def roomInDirection(self, direction):
         if direction == "n":
@@ -38,3 +39,9 @@ class Room:
         if self.e_to is not None:
             exits.append("e")
         return ", ".join(exits)
+
+    def room_item(self, item_name):
+        for item in self.items:
+            if item.name == item_name:
+                return item
+        return None
